@@ -157,6 +157,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- My own settings
+vim.opt.laststatus = 3
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -207,11 +210,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- My own keymaps
 vim.keymap.set('n', '<leader>pv', '<Cmd>Ex<CR>', { silent = true })
 
--- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
--- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
--- vim.keymap.set('n', 'J', 'mzJ`z')
--- vim.keymap.set('n', 'J', 'mzJ`z')
-
 vim.keymap.set(
   'n',
   '<leader>d',
@@ -231,13 +229,22 @@ vim.keymap.set('n', '<M-->', [[<cmd>horizontal resize -2<cr>]]) -- make the wind
 
 vim.keymap.set('n', 'J', '5j', { noremap = true, silent = true })
 vim.keymap.set('n', 'K', '5k', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>j', '20j', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>k', '20k', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>j', '20jzz', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>k', '20kzz', { noremap = true, silent = true })
 
 vim.keymap.set('v', 'J', '5j', { noremap = true, silent = true })
 vim.keymap.set('v', 'K', '5k', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>j', '20j', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>k', '20k', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>j', '20jzz', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>k', '20kzz', { noremap = true, silent = true })
+
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-f>', '<C-f>zz')
+vim.keymap.set('n', '<C-b>', '<C-b>zz')
+
+vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv")
+-- vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- Neovide
 if vim.g.neovide == true then
@@ -254,7 +261,7 @@ vim.g.neovide_padding_right = 4
 vim.g.neovide_padding_left = 4
 -- vim.g.neovide_transparency = 0.9
 -- vim.g.neovide_normal_opacity = 0.8
--- vim.o.guifont = 'JetBrainsMono Nerd Font:h9:b' .. 400
+-- vim.o.guifont = 'JetBraisMono Nerd Font:h9:b' .. 400
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -938,17 +945,39 @@ require('lazy').setup({
   },
 
   {
-    'nyoom-engineering/oxocarbon.nvim',
+    'slugbyte/lackluster.nvim',
+    lazy = false,
+    priority = 1000,
     init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'oxocarbon'
+      --  When testing transparent backgrounds I found that comments where often hard to read,
+      --  and menus didn't look good but using setup() tweaks you can easily address that!
+      local lackluster = require 'lackluster'
 
-      -- You can configure highlights by doing something like:
-      -- vim.cmd.hi 'Comment gui=none'
+      -- !must called setup() before setting the colorscheme!
+      lackluster.setup {
+        tweak_syntax = {
+          comment = lackluster.color.gray4, -- or gray5
+        },
+        tweak_background = {
+          normal = 'none',
+          telescope = 'none',
+          menu = lackluster.color.gray3,
+          popup = 'none',
+        },
+      }
+
+      -- vim.cmd.colorscheme("lackluster")
+      vim.cmd.colorscheme 'lackluster-hack' -- my favorite
+      -- vim.cmd.colorscheme("lackluster-mint")
     end,
   },
+
+  -- {
+  --   'nyoom-engineering/oxocarbon.nvim',
+  --   init = function()
+  --     vim.cmd.colorscheme 'oxocarbon'
+  --   end,
+  -- },
 
   -- { -- You can easily change to a different colorscheme. Change the name of the colorscheme plugin below, and then change the command in the config to whatever the name of that colorscheme is.
   --   --

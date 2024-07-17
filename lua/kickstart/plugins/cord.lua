@@ -10,7 +10,8 @@ return {
         tooltip = 'Neovim',
       },
       display = {
-        theme = 'onyx',
+        show_repository = false,
+        theme = 'pastel',
         swap_fields = false,
         swap_icons = true,
       },
@@ -26,15 +27,16 @@ return {
         ignore_focus = true,
         unidle_on_focus = true,
         smart_idle = true,
-        details = 'Idling',
-        text = 'editor so good, i come',
+        details = '',
+        text = '',
         state = nil,
         tooltip = '💤',
         icon = nil,
       },
       text = {
-        viewing = '‎‎', -- Text to display when viewing a readonly file
-        editing = 'editor so good, i come', -- Text to display when editing a file
+        -- viewing = '‎‎',
+        viewing = '', -- Text to display when viewing a readonly file
+        editing = '', -- Text to display when editing a file
         file_browser = '', -- Text to display when browsing files (Empty string to disable)
         plugin_manager = '', -- Text to display when managing plugins (Empty string to disable)
         lsp_manager = '', -- Text to display when managing LSP servers (Empty string to disable)
