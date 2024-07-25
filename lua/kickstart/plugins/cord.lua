@@ -27,13 +27,14 @@ return {
         unidle_on_focus = true,
         smart_idle = true,
         details = 'Idling',
+        text = 'fingers go brrr',
         state = nil,
         tooltip = '💤',
         icon = nil,
       },
       text = {
         viewing = '‎‎', -- Text to display when viewing a readonly file
-        editing = 'hjkl', -- Text to display when editing a file
+        editing = 'fingers go brrr', -- Text to display when editing a file
         file_browser = '', -- Text to display when browsing files (Empty string to disable)
         plugin_manager = '', -- Text to display when managing plugins (Empty string to disable)
         lsp_manager = '', -- Text to display when managing LSP servers (Empty string to disable)
