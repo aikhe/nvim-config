@@ -218,6 +218,9 @@ vim.keymap.set(
   { desc = 'Open diagnostic float' } -- Optional description
 )
 vim.keymap.set('n', '<leader>q', '<cmd>close<CR>', { desc = 'Close floating window' })
+vim.keymap.set('n', '<leader>pr', [[<cmd>Neotree float<cr>]])
+vim.keymap.set('n', '<leader>pf', [[<cmd>Neotree left<cr>]])
+vim.keymap.set('n', '<leader>pc', [[<cmd>Neotree toggle<cr>]])
 vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 vim.keymap.set('n', '+', [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
