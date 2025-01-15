@@ -234,6 +234,11 @@ vim.keymap.set('n', 'K', '5k', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>j', '20j', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>k', '20k', { noremap = true, silent = true })
 
+vim.keymap.set('v', 'J', '5j', { noremap = true, silent = true })
+vim.keymap.set('v', 'K', '5k', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>j', '20j', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>k', '20k', { noremap = true, silent = true })
+
 -- Neovide
 if vim.g.neovide == true then
   -- vim.cmd 'set guifont=Hack\ NF:h10'
@@ -932,41 +937,52 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    opts = {
-      transparent = true, -- Enable this to disable setting the background color
-      terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-      styles = {
-        -- Style to be applied to different syntax groups
-        -- Value is any valid attr-list value for `:help nvim_set_hl`
-        comments = { italic = true },
-        keywords = { italic = true },
-        functions = {},
-        variables = {},
-        -- Background styles. Can be "dark", "transparent" or "normal"
-        sidebars = 'transparent', -- style for sidebars, see below
-        floats = 'transparent', -- style for floating windows
-      },
-      day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-      dim_inactive = false, -- dims inactive windows
-      lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
-    },
+  {
+    'nyoom-engineering/oxocarbon.nvim',
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'oxocarbon'
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
     end,
   },
+
+  -- { -- You can easily change to a different colorscheme. Change the name of the colorscheme plugin below, and then change the command in the config to whatever the name of that colorscheme is.
+  --   --
+  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   opts = {
+  --     transparent = true, -- Enable this to disable setting the background color
+  --     terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  --     styles = {
+  --       -- Style to be applied to different syntax groups
+  --       -- Value is any valid attr-list value for `:help nvim_set_hl`
+  --       comments = { italic = true },
+  --       keywords = { italic = true },
+  --       functions = {},
+  --       variables = {},
+  --       -- Background styles. Can be "dark", "transparent" or "normal"
+  --       sidebars = 'transparent', -- style for sidebars, see below
+  --       floats = 'transparent', -- style for floating windows
+  --     },
+  --     day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+  --     dim_inactive = false, -- dims inactive windows
+  --     lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+  --   },
+  --   init = function()
+  --     -- Load the colorscheme here.
+  --     -- Like many other themes, this one has different styles, and you could load
+  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+  --     vim.cmd.colorscheme 'tokyonight-night'
+
+  --     -- You can configure highlights by doing something like:
+  --     -- vim.cmd.hi 'Comment gui=none'
+  --   end,
+  -- },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
