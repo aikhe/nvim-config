@@ -226,6 +226,19 @@ vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window sma
 vim.keymap.set('n', '+', [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set('n', '_', [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
+-- Neovide
+if vim.g.neovide == true then
+  -- vim.cmd 'set guifont=Hack\ NF:h10'
+  -- vim.o.guifont='Consolas:h10'
+  -- vim.o.guifont='FiraCode NF:h14'
+  vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
+end
+vim.opt.linespace = -3
+vim.g.neovide_padding_top = 4
+vim.g.neovide_padding_bottom = 4
+vim.g.neovide_padding_right = 4
+vim.g.neovide_padding_left = 4
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -437,7 +450,7 @@ require('lazy').setup({
               ['<cr>'] = select_default,
             },
           },
-          file_ignore_patterns = { 'node_modules' },
+          file_ignore_patterns = { 'node_modules', '.next', '.git' },
         },
         -- pickers = {}
         extensions = {
@@ -677,6 +690,7 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
+        tailwindcss = {},
         pyright = {},
         html = {},
 
