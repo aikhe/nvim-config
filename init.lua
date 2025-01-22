@@ -209,22 +209,28 @@ vim.keymap.set('n', '<leader>pv', '<Cmd>Ex<CR>', { silent = true })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', 'J', 'mzJ`z')
+-- vim.keymap.set('n', 'J', 'mzJ`z')
+-- vim.keymap.set('n', 'J', 'mzJ`z')
+
 vim.keymap.set(
   'n',
-  '<leader>e',
+  '<leader>d',
   '<cmd>lua vim.diagnostic.open_float()<CR>',
   { desc = 'Open diagnostic float' } -- Optional description
 )
 vim.keymap.set('n', '<leader>q', '<cmd>close<CR>', { desc = 'Close floating window' })
+
 vim.keymap.set('n', '<leader>pf', [[<cmd>Neotree float<cr>]])
 vim.keymap.set('n', '<leader>pt', [[<cmd>Neotree left<cr>]])
 vim.keymap.set('n', '<leader>pc', [[<cmd>Neotree toggle<cr>]])
+
 vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 vim.keymap.set('n', '+', [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set('n', '_', [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
+
+vim.keymap.set('n', 'J', '20j', { noremap = true, silent = true })
+vim.keymap.set('n', 'K', '20k', { noremap = true, silent = true })
 
 -- Neovide
 if vim.g.neovide == true then
