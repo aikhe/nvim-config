@@ -1,4 +1,4 @@
---[[
+--[[init
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -207,8 +207,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- My own keymaps
 vim.keymap.set('n', '<leader>pv', '<Cmd>Ex<CR>', { silent = true })
 
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+-- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 -- vim.keymap.set('n', 'J', 'mzJ`z')
 -- vim.keymap.set('n', 'J', 'mzJ`z')
 
@@ -229,21 +229,26 @@ vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window sma
 vim.keymap.set('n', '+', [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set('n', '_', [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
-vim.keymap.set('n', 'J', '20j', { noremap = true, silent = true })
-vim.keymap.set('n', 'K', '20k', { noremap = true, silent = true })
+vim.keymap.set('n', 'J', '5j', { noremap = true, silent = true })
+vim.keymap.set('n', 'K', '5k', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>j', '20j', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>k', '20k', { noremap = true, silent = true })
 
 -- Neovide
 if vim.g.neovide == true then
   -- vim.cmd 'set guifont=Hack\ NF:h10'
   -- vim.o.guifont='Consolas:h10'
   -- vim.o.guifont='FiraCode NF:h14'
-  vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
+  -- vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
+  vim.g.neovide_fullscreen = true
 end
 vim.opt.linespace = -3
 vim.g.neovide_padding_top = 4
 vim.g.neovide_padding_bottom = 4
 vim.g.neovide_padding_right = 4
 vim.g.neovide_padding_left = 4
+-- vim.g.neovide_transparency = 0.9
+-- vim.g.neovide_normal_opacity = 0.8
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -899,6 +904,9 @@ require('lazy').setup({
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
+        -- formatting = {
+        --   format = tailwind_colorizer_cmp.formatter(),
+        -- },
         sources = {
           {
             name = 'lazydev',
@@ -1041,6 +1049,7 @@ require('lazy').setup({
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.git', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.cord',
+  require 'kickstart.plugins.colors',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
