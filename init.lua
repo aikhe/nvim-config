@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -224,10 +224,10 @@ vim.keymap.set('n', '<leader>pf', [[<cmd>Neotree float<cr>]])
 vim.keymap.set('n', '<leader>pt', [[<cmd>Neotree left<cr>]])
 vim.keymap.set('n', '<leader>pc', [[<cmd>Neotree toggle<cr>]])
 
-vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
-vim.keymap.set('n', '<A-=>', [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
-vim.keymap.set('n', '<M-->', [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
+vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger horizontally
+vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller horizontally
+vim.keymap.set('n', '<A-=>', [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger vertically by pressing shift and =
+vim.keymap.set('n', '<M-->', [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller vertically by pressing shift and -
 
 vim.keymap.set('n', 'J', '5j', { noremap = true, silent = true })
 vim.keymap.set('n', 'K', '5k', { noremap = true, silent = true })
@@ -242,13 +242,14 @@ if vim.g.neovide == true then
   -- vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
   vim.g.neovide_fullscreen = true
 end
-vim.opt.linespace = -3
+vim.opt.linespace = -2
 vim.g.neovide_padding_top = 4
 vim.g.neovide_padding_bottom = 4
 vim.g.neovide_padding_right = 4
 vim.g.neovide_padding_left = 4
 -- vim.g.neovide_transparency = 0.9
 -- vim.g.neovide_normal_opacity = 0.8
+-- vim.o.guifont = 'JetBrainsMono Nerd Font:h9:b' .. 400
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
