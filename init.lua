@@ -207,8 +207,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'OilEnter',
+  callback = vim.schedule_wrap(function(args)
+    local oil = require 'oil'
+
+    -- Check if the current buffer is the Oil buffer
+    if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
+      local winid = vim.api.nvim_get_current_win()
+      local win_config = vim.api.nvim_win_get_config(winid)
+
+      -- Check if the window is a float (typically 'relative' will be true for floats)
+      -- You might also want to check 'row' and 'col' to ensure it's not a regular split.
+      if win_config.relative == 'editor' then
+        oil.open_preview()
+      end
+    end
+  end),
+})
+
 -- My own keymaps
-vim.keymap.set('n', '<leader>pv', '<Cmd>Ex<CR>', { silent = true })
+vim.keymap.set('n', '<leader>pv', '<Cmd>Oil<CR>', { silent = true })
+vim.keymap.set('n', '<leader>pe', '<Cmd>Oil --float<CR>', { silent = true })
 
 vim.keymap.set(
   'n',
@@ -493,6 +513,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -1096,6 +1117,7 @@ require('lazy').setup({
   require 'kickstart.plugins.git', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.cord',
   require 'kickstart.plugins.colors',
+  require 'kickstart.plugins.oil',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
