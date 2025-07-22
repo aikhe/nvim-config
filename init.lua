@@ -226,6 +226,18 @@ vim.api.nvim_create_autocmd('User', {
   end),
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'oil',
+  callback = function()
+    vim.keymap.set('n', '<leader>yd', function()
+      local current_dir = require('oil').get_current_dir()
+      -- Use the "+ register to put text into the system clipboard
+      vim.fn.setreg('+', current_dir)
+      vim.notify('Yanked: ' .. current_dir, vim.log.levels.INFO, { title = 'Oil.nvim' })
+    end, { desc = 'Oil: Yank current directory to system clipboard' })
+  end,
+})
+
 -- My own keymaps
 vim.keymap.set('n', '<leader>pv', '<Cmd>Oil<CR>', { silent = true })
 vim.keymap.set('n', '<leader>pe', '<Cmd>Oil --float<CR>', { silent = true })
@@ -753,6 +765,11 @@ require('lazy').setup({
             },
           },
         },
+
+        jsonls = {},
+        stylelint_lsp = {},
+        eslint = {},
+        dockerls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -822,7 +839,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         lua = { 'stylua' },
@@ -832,6 +849,9 @@ require('lazy').setup({
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         css = { 'prettierd', 'prettier', stop_after_first = true },
         html = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        mjs = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },

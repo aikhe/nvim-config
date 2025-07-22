@@ -28,6 +28,10 @@ return {
       show_hidden = true,
     },
 
+    win_options = {
+      winbar = "%{v:lua.require('oil').get_current_dir()}",
+    },
+
     float = {
       -- Padding around the floating window
       padding = 4,
@@ -37,6 +41,7 @@ return {
       border = 'rounded',
       win_options = {
         winblend = 0,
+        winbar = "%{v:lua.require('oil').get_current_dir()}",
       },
       -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
       get_win_title = nil,
@@ -48,6 +53,14 @@ return {
         return conf
       end,
     },
+
+    -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+    delete_to_trash = false,
+    -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
+    skip_confirm_for_simple_edits = true,
+    -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+    -- (:help prompt_save_on_select_new_entry)
+    prompt_save_on_select_new_entry = false,
   },
   -- Optional dependencies
   -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
