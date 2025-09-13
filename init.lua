@@ -503,9 +503,12 @@ require('lazy').setup({
           mappings = {
             i = {
               ['<cr>'] = select_default,
+              ['<c-d>'] = actions.delete_buffer,
             },
             n = {
               ['<cr>'] = select_default,
+              ['<c-d>'] = actions.delete_buffer,
+              ['dd'] = actions.delete_buffer,
             },
           },
           file_ignore_patterns = { 'node_modules', '.next', '.git' },
@@ -1200,6 +1203,7 @@ require('lazy').setup({
   require 'kickstart.plugins.cord',
   require 'kickstart.plugins.colors',
   require 'kickstart.plugins.oil',
+  require 'kickstart.plugins.comment',
   -- require 'kickstart.plugins.yazi',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
