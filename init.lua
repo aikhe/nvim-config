@@ -207,24 +207,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'OilEnter',
-  callback = vim.schedule_wrap(function(args)
-    local oil = require 'oil'
-
-    -- Check if the current buffer is the Oil buffer
-    if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
-      local winid = vim.api.nvim_get_current_win()
-      local win_config = vim.api.nvim_win_get_config(winid)
-
-      -- Check if the window is a float (typically 'relative' will be true for floats)
-      -- You might also want to check 'row' and 'col' to ensure it's not a regular split.
-      if win_config.relative == 'editor' then
-        oil.open_preview()
-      end
-    end
-  end),
-})
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'OilEnter',
+--   callback = vim.schedule_wrap(function(args)
+--     local oil = require 'oil'
+--
+--     -- Check if the current buffer is the Oil buffer
+--     if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
+--       local winid = vim.api.nvim_get_current_win()
+--       local win_config = vim.api.nvim_win_get_config(winid)
+--
+--       -- Check if the window is a float (typically 'relative' will be true for floats)
+--       -- You might also want to check 'row' and 'col' to ensure it's not a regular split.
+--       if win_config.relative == 'editor' then
+--         oil.open_preview()
+--       end
+--     end
+--   end),
+-- })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'oil',
@@ -279,18 +279,20 @@ vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv")
 -- vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- Neovide
-if vim.g.neovide == true then
-  -- vim.cmd 'set guifont=Hack\ NF:h10'
-  -- vim.o.guifont='Consolas:h10'
-  -- vim.o.guifont='FiraCode NF:h14'
-  -- vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
-  vim.g.neovide_fullscreen = true
-end
+-- if vim.g.neovide == true then
+--   -- vim.cmd 'set guifont=Hack\ NF:h10'
+--   -- vim.o.guifont='Consolas:h10'
+--   -- vim.o.guifont='FiraCode NF:h14'
+--   -- vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
+--   vim.g.neovide_fullscreen = true
+-- end
 vim.opt.linespace = -2
-vim.g.neovide_padding_top = 4
-vim.g.neovide_padding_bottom = 4
-vim.g.neovide_padding_right = 4
-vim.g.neovide_padding_left = 4
+vim.g.neovide_padding_top = 8
+vim.g.neovide_padding_bottom = 8
+vim.g.neovide_padding_right = 8
+vim.g.neovide_padding_left = 8
+vim.g.neovide_transparency = 0.8
+-- vim.g.neovide_background_color = '#000000'
 -- vim.g.neovide_transparency = 0.9
 -- vim.g.neovide_normal_opacity = 0.8
 -- vim.o.guifont = 'JetBraisMono Nerd Font:h9:b' .. 400
@@ -806,6 +808,7 @@ require('lazy').setup({
           -- },
         },
         tailwindcss = {},
+        cssls = {},
         pyright = {},
         html = {},
 
@@ -1197,6 +1200,7 @@ require('lazy').setup({
   require 'kickstart.plugins.cord',
   require 'kickstart.plugins.colors',
   require 'kickstart.plugins.oil',
+  -- require 'kickstart.plugins.yazi',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
