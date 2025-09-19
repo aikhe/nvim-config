@@ -294,7 +294,25 @@ vim.keymap.set('n', '<leader>r', function()
 
   local bufnr = vim.api.nvim_get_current_buf()
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', [[:bd!<CR>]], { noremap = true, silent = true })
-end, { noremap = true, silent = true })
+end, { desc = 'complie & run c', noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>i', function()
+  vim.cmd('belowright split | resize ' .. math.floor(vim.o.lines / 2))
+
+  local dir = vim.fn.expand '%:p:h'
+  local makefile_path = dir .. '/makefile'
+  local makefile_exists = vim.fn.filereadable(makefile_path) == 1
+  print('makefile exists: ' .. tostring(makefile_exists))
+
+  if makefile_exists then
+    vim.cmd('term cd ' .. dir .. '&& make clean')
+  else
+    vim.cmd [[term echo "no makefile found!"]]
+  end
+
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', [[:bd!<CR>]], { noremap = true, silent = true })
+end, { desc = 'clean c build', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>d', '<cmd>:bd! | Oil<CR>', { desc = 'Delete current Buffer' })
 
