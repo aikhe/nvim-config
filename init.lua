@@ -280,7 +280,18 @@ vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv")
 
 vim.keymap.set('n', '<leader>r', function()
   vim.cmd('belowright split | resize ' .. math.floor(vim.o.lines / 2))
-  vim.cmd 'term gcc % -o %:r.exe && %:r.exe'
+
+  local dir = vim.fn.expand '%:p:h'
+  local makefile_path = dir .. '/makefile'
+  local makefile_exists = vim.fn.filereadable(makefile_path) == 1
+  print('makefile exists: ' .. tostring(makefile_exists))
+
+  if makefile_exists then
+    vim.cmd('term cd ' .. dir .. '&& make run')
+  else
+    vim.cmd 'term gcc % -o %:r.exe && ./%:r.exe'
+  end
+
   local bufnr = vim.api.nvim_get_current_buf()
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', [[:bd!<CR>]], { noremap = true, silent = true })
 end, { noremap = true, silent = true })
@@ -909,7 +920,7 @@ require('lazy').setup({
           lsp_format_opt = 'fallback'
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 2000,
           lsp_format = lsp_format_opt,
         }
       end,
