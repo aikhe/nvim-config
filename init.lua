@@ -278,6 +278,15 @@ vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv")
 -- vim.keymap.set('n', 'J', 'mzJ`z')
 
+vim.keymap.set('n', '<leader>r', function()
+  vim.cmd('belowright split | resize ' .. math.floor(vim.o.lines / 2))
+  vim.cmd 'term gcc % -o %:r.exe && %:r.exe'
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', [[:bd!<CR>]], { noremap = true, silent = true })
+end, { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>d', '<cmd>:bd! | Oil<CR>', { desc = 'Delete current Buffer' })
+
 -- Neovide
 -- if vim.g.neovide == true then
 --   -- vim.cmd 'set guifont=Hack\ NF:h10'
@@ -407,8 +416,8 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
+        -- { '<leader>d', group = '[D]ocument' },
+        -- { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
