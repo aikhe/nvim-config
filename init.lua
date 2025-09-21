@@ -843,6 +843,9 @@ require('lazy').setup({
         stylelint_lsp = {},
         eslint = {},
         dockerls = {},
+        dockerls = {},
+
+        clangd = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -926,6 +929,8 @@ require('lazy').setup({
         json = { 'prettierd', 'prettier', stop_after_first = true },
         markdown = { 'prettierd', 'prettier', stop_after_first = true },
         mjs = { 'prettierd', 'prettier', stop_after_first = true },
+        c = { 'clang_format' },
+        cpp = { 'clang_format' },
       },
     },
   },
