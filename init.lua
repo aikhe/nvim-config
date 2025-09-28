@@ -284,12 +284,14 @@ vim.keymap.set('n', '<leader>r', function()
   local dir = vim.fn.expand '%:p:h'
   local makefile_path = dir .. '/makefile'
   local makefile_exists = vim.fn.filereadable(makefile_path) == 1
+  local program = vim.fn.expand '%:t:r'
   print('makefile exists: ' .. tostring(makefile_exists))
 
   if makefile_exists then
-    vim.cmd('term cd ' .. dir .. '&& make run')
+    vim.cmd('term cd ' .. dir .. ' && make run PROGRAM=' .. program)
   else
-    vim.cmd 'term gcc % -o %:r.exe && ./%:r.exe'
+    print '%'
+    vim.cmd 'term gcc % -o %:r.exe && %:r.exe'
   end
 
   local bufnr = vim.api.nvim_get_current_buf()
@@ -302,10 +304,11 @@ vim.keymap.set('n', '<leader>i', function()
   local dir = vim.fn.expand '%:p:h'
   local makefile_path = dir .. '/makefile'
   local makefile_exists = vim.fn.filereadable(makefile_path) == 1
+  local program = vim.fn.expand '%:t:r'
   print('makefile exists: ' .. tostring(makefile_exists))
 
   if makefile_exists then
-    vim.cmd('term cd ' .. dir .. '&& make clean')
+    vim.cmd('term cd ' .. dir .. '&& make clean PROGRAM=' .. program)
   else
     vim.cmd [[term echo "no makefile found!"]]
   end
@@ -314,7 +317,7 @@ vim.keymap.set('n', '<leader>i', function()
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', [[:bd!<CR>]], { noremap = true, silent = true })
 end, { desc = 'clean c build', noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>d', '<cmd>:bd! | Oil<CR>', { desc = 'Delete current Buffer' })
+vim.keymap.set('n', '<leader>db', '<cmd>:bd! | Oil<CR>', { desc = 'Delete current Buffer' })
 
 -- Neovide
 -- if vim.g.neovide == true then
