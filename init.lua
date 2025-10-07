@@ -282,10 +282,9 @@ vim.keymap.set('n', '<leader>r', function()
   vim.cmd('belowright split | resize ' .. math.floor(vim.o.lines / 2))
 
   local dir = vim.fn.expand '%:p:h'
-  local makefile_path = dir .. '/makefile'
+  local makefile_path = dir .. '/Makefile'
   local makefile_exists = vim.fn.filereadable(makefile_path) == 1
   local program = vim.fn.expand '%:t:r'
-  print('makefile exists: ' .. tostring(makefile_exists))
 
   if makefile_exists then
     vim.cmd('term cd ' .. dir .. ' && make run PROGRAM=' .. program)
@@ -302,14 +301,15 @@ vim.keymap.set('n', '<leader>i', function()
   vim.cmd('belowright split | resize ' .. math.floor(vim.o.lines / 2))
 
   local dir = vim.fn.expand '%:p:h'
-  local makefile_path = dir .. '/makefile'
-  local makefile_exists = vim.fn.filereadable(makefile_path) == 1
+  local makefile_path = dir .. '/Makefile'
+  local makefile_exists = vim.fn.filereadable(makefile_path)
   local program = vim.fn.expand '%:t:r'
-  print('makefile exists: ' .. tostring(makefile_exists))
 
-  if makefile_exists then
-    vim.cmd('term cd ' .. dir .. '&& make clean PROGRAM=' .. program)
+  if makefile_exists == 1 then
+    -- print '✅ makefile exists'
+    vim.cmd('term cd ' .. dir .. ' && make clean PROGRAM=' .. program)
   else
+    -- print '❌ no makefile found'
     vim.cmd [[term echo "no makefile found!"]]
   end
 
