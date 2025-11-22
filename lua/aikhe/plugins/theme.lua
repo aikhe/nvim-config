@@ -24,9 +24,7 @@ return {
     vim.cmd.colorscheme 'lackluster-hack' -- my favorite
     -- vim.cmd.colorscheme("lackluster-mint")
   end,
-
-
-},
+}
 
 --return {
 --   'nyoom-engineering/oxocarbon.nvim',
@@ -67,4 +65,4 @@ return {
 --     -- You can configure highlights by doing something like:
 --     -- vim.cmd.hi 'Comment gui=none'
 --   end,
--- },
+-- }

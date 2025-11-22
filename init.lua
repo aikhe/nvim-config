@@ -15,7 +15,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
-  require 'aikhe.plugins.auth-tag',
+  require 'aikhe.plugins.auto-tag',
   require 'aikhe.plugins.autocompletion',
   require 'aikhe.plugins.autopairs',
   require 'aikhe.plugins.autoformat',
@@ -33,11 +33,11 @@ require('lazy').setup {
   require 'aikhe.plugins.oil',
   require 'aikhe.plugins.telescope',
   require 'aikhe.plugins.theme',
-  require 'aikhe.plugins.tood-comments',
+  require 'aikhe.plugins.todo-comments',
   require 'aikhe.plugins.treesitter',
   require 'aikhe.plugins.vim-sleuth',
   require 'aikhe.plugins.which-key',
-  -- require 'kickstart.plugins.yazi',
+  require 'aikhe.plugins.yazi',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
