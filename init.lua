@@ -37,7 +37,7 @@ require('lazy').setup {
   require 'aikhe.plugins.treesitter',
   require 'aikhe.plugins.vim-sleuth',
   require 'aikhe.plugins.which-key',
-  require 'aikhe.plugins.yazi',
+  -- require 'aikhe.plugins.yazi',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
