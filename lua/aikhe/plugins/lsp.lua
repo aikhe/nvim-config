@@ -216,9 +216,16 @@ return {
         },
         tailwindcss = {},
         cssls = {},
-        pyright = {},
         html = {},
+        stylelint_lsp = {},
+        eslint = {},
 
+        dockerls = {},
+        jsonls = {},
+
+        jdtls = {},
+        clangd = {},
+        pyright = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -233,14 +240,6 @@ return {
             },
           },
         },
-
-        jsonls = {},
-        stylelint_lsp = {},
-        eslint = {},
-        dockerls = {},
-        dockerls = {},
-
-        clangd = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -258,6 +257,8 @@ return {
         'stylua', -- Used to format Lua code
         'prettierd',
         'prettier',
+        'clang-format',
+        'google-java-format',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -48,6 +48,7 @@ return { -- Autoformat
       mjs = { 'prettierd', 'prettier', stop_after_first = true },
       c = { 'clang_format' },
       cpp = { 'clang_format' },
+      java = { 'google_java_format' },
     },
   },
 }
