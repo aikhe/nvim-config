@@ -240,6 +240,8 @@ return {
             },
           },
         },
+        vue_ls = {},
+        vtsls = {}, -- dependency for vue_ls
       }
 
       -- Ensure the servers and tools above are installed
