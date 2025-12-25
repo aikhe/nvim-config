@@ -38,7 +38,7 @@ require('lazy').setup {
   require 'plugins.which-key',
   require 'plugins.lualine',
   require 'plugins.blankline',
-  require 'custom-plugins.exec',
+  require 'plugins.personal',
   -- require 'plugins.yazi',
 }
 

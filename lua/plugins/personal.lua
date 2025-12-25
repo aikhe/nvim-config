@@ -1,6 +1,10 @@
 return {
   {
-    dir = 'C:/Users/aikhe/Desktop/ike/local/nvim-plugin',
+    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/exec.nvim',
+    name = 'exec',
+    priority = 500,
+    lazy = false,
+
     opts = {
       terminal = 'powershell',
       cmd = { 'javac Sample.java', 'java Sample' },
