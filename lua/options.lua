@@ -42,3 +42,12 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
+
+vim.diagnostic.config {
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+
+  -- underline = true, -- Underline the problematic code
+  -- severity_sort = true, -- Sort diagnostics by severity
+}

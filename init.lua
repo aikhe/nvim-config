@@ -1,8 +1,8 @@
-require 'aikhe.options'
-require 'aikhe.keymaps'
-require 'aikhe.neovide'
+require 'options'
+require 'keymaps'
+require 'neovide'
 
-require 'aikhe.health'
+require 'health'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -15,29 +15,30 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
-  require 'aikhe.plugins.auto-tag',
-  require 'aikhe.plugins.autocompletion',
-  require 'aikhe.plugins.autopairs',
-  require 'aikhe.plugins.autoformat',
-  require 'aikhe.plugins.colors',
-  require 'aikhe.plugins.comment',
-  require 'aikhe.plugins.cord',
-  require 'aikhe.plugins.debug',
-  require 'aikhe.plugins.git',
-  require 'aikhe.plugins.gitsigns',
-  require 'aikhe.plugins.indent_line',
-  require 'aikhe.plugins.lint',
-  require 'aikhe.plugins.lsp',
-  require 'aikhe.plugins.mini',
-  require 'aikhe.plugins.neo-tree',
-  require 'aikhe.plugins.oil',
-  require 'aikhe.plugins.telescope',
-  require 'aikhe.plugins.theme',
-  require 'aikhe.plugins.todo-comments',
-  require 'aikhe.plugins.treesitter',
-  require 'aikhe.plugins.vim-sleuth',
-  require 'aikhe.plugins.which-key',
-  -- require 'aikhe.plugins.yazi',
+  require 'plugins.auto-tag',
+  require 'plugins.autocompletion',
+  require 'plugins.autopairs',
+  require 'plugins.autoformat',
+  require 'plugins.colors',
+  require 'plugins.comment',
+  require 'plugins.cord',
+  require 'plugins.debug',
+  require 'plugins.git',
+  require 'plugins.gitsigns',
+  require 'plugins.indent_line',
+  require 'plugins.lint',
+  require 'plugins.lsp',
+  require 'plugins.mini',
+  require 'plugins.neo-tree',
+  require 'plugins.oil',
+  require 'plugins.telescope',
+  require 'plugins.theme',
+  require 'plugins.todo-comments',
+  require 'plugins.treesitter',
+  require 'plugins.vim-sleuth',
+  require 'plugins.which-key',
+  require 'custom-plugins.exec',
+  -- require 'plugins.yazi',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
