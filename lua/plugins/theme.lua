@@ -13,10 +13,10 @@ return {
         comment = lackluster.color.gray4, -- or gray5
       },
       tweak_background = {
-        -- normal = 'none',
-        -- telescope = 'none',
-        -- menu = lackluster.color.gray3,
-        -- popup = 'none',
+        normal = 'none',
+        telescope = 'none',
+        menu = lackluster.color.gray3,
+        popup = 'none',
       },
     }
 

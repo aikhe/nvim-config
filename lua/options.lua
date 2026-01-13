@@ -11,7 +11,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes' -- Keep signcolumn on by default
 vim.opt.updatetime = 250 -- Decrease update time
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.scrolloff = 10
 
 -- Decrease mapped sequence wait time

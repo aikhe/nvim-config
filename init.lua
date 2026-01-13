@@ -25,7 +25,6 @@ require('lazy').setup {
   require 'plugins.debug',
   require 'plugins.git',
   require 'plugins.gitsigns',
-  require 'plugins.indent_line',
   require 'plugins.lint',
   require 'plugins.lsp',
   require 'plugins.mini',
@@ -37,6 +36,8 @@ require('lazy').setup {
   require 'plugins.treesitter',
   require 'plugins.vim-sleuth',
   require 'plugins.which-key',
+  require 'plugins.lualine',
+  require 'plugins.blankline',
   require 'custom-plugins.exec',
   -- require 'plugins.yazi',
 }
