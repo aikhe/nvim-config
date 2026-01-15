@@ -12,4 +12,19 @@ return {
       border = 'single',
     },
   },
+
+  {
+    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/volt.test',
+    name = 'volt-test',
+  },
+
+  {
+    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/fleur.nvim',
+    name = 'fleur',
+    priority = 1000,
+    lazy = false,
+    config = function()
+      vim.cmd [[colorscheme fleur]]
+    end,
+  },
 }

@@ -105,8 +105,8 @@ return {
           {
             function()
               local icon, _ = get_file_icon()
-              local filename = vim.fn.expand '%:t'
-              return (icon or '') .. ' ' .. filename .. ' '
+              local filepath = vim.fn.expand '%:p'
+              return (icon or '') .. ' ' .. filepath .. ' '
             end,
             color = { fg = colors.text_dim, bg = colors.black },
             separator = { right = '' },
