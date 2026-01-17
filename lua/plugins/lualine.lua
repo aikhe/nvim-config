@@ -15,42 +15,54 @@ return {
       green = '#789978',
       blue = '#7788AA',
       slate = '#cccccc',
-      transparent = 'NONE',
     }
+
+    -- Helper to get normal background color dynamically
+    local function get_bg()
+      local hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
+      if hl and hl.bg then
+        return string.format('#%06x', hl.bg)
+      end
+      return 'NONE' -- Fallback
+    end
+
+    colors.bg = get_bg()
+
+    print(colors.bg)
 
     local Lukies_theme = {
       normal = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
-        x = { fg = 'NONE', bg = colors.black },
-        y = { fg = colors.text_dim, bg = colors.black, gui = 'bold' },
-        z = { fg = colors.text_dim, bg = colors.black },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
+        x = { fg = 'NONE', bg = colors.bg },
+        y = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
+        z = { fg = colors.text_dim, bg = colors.bg },
       },
       insert = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
       },
       visual = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
       },
       replace = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
       },
       command = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
       },
       inactive = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
       },
     }
 
@@ -88,7 +100,7 @@ return {
           {
             'mode',
             icon = '󰝤 ',
-            separator = { fg = colors.black, left = '', right = ' ' },
+            separator = { fg = colors.bg, left = '', right = ' ' },
             right_padding = 0,
           },
         },
@@ -99,7 +111,7 @@ return {
               return current_directory ~= '' and current_directory .. '' or '[No Name]'
             end,
             icon = '󰉖',
-            color = { fg = colors.text_dim, bg = colors.black },
+            color = { fg = colors.text_dim, bg = colors.bg },
             right_padding = 2,
           },
           {
@@ -108,7 +120,7 @@ return {
               local filepath = vim.fn.expand '%:p'
               return (icon or '') .. ' ' .. filepath .. ' '
             end,
-            color = { fg = colors.text_dim, bg = colors.black },
+            color = { fg = colors.text_dim, bg = colors.bg },
             separator = { right = '' },
           },
         },
@@ -116,7 +128,7 @@ return {
           {
             'diagnostics',
             symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' },
-            color = { fg = colors.text_dim, bg = colors.black }, -- MOVED INSIDE
+            color = { fg = colors.text_dim, bg = colors.bg }, -- MOVED INSIDE
           },
         },
         lualine_x = {},
@@ -130,7 +142,7 @@ return {
               return string.format('%d/%d : %d ', current_line, total_lines, current_col)
             end,
             icon = ' 󰉢',
-            color = { fg = colors.text_dim, bg = colors.black },
+            color = { fg = colors.text_dim, bg = colors.bg },
             separator = { left = '' },
           },
         },

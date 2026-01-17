@@ -1,3 +1,13 @@
+-- return {
+--   'oskarnurm/koda.nvim',
+--   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+--   priority = 1000, -- make sure to load this before all the other start plugins
+--   config = function()
+--     -- require("koda").setup({ transparent = true })
+--     vim.cmd 'colorscheme koda'
+--   end,
+-- }
+
 return {
   'slugbyte/lackluster.nvim',
   lazy = false,
@@ -13,10 +23,10 @@ return {
         comment = lackluster.color.gray4, -- or gray5
       },
       tweak_background = {
-        normal = 'none',
-        telescope = 'none',
-        menu = lackluster.color.gray3,
-        popup = 'none',
+        -- normal = 'none',
+        -- telescope = 'none',
+        -- menu = lackluster.color.gray3,
+        -- popup = 'none',
       },
     }
 
