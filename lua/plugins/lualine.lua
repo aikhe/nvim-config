@@ -9,7 +9,7 @@ return {
       gray3 = '#2A2A2A',
       gray4 = '#444444',
       text_light = '#DEEEED',
-      text_dim = '#CCCCCC',
+      text_dim = '#7a7a7a',
       red = '#D70000',
       warn = '#FFAA88',
       green = '#789978',
@@ -32,8 +32,8 @@ return {
 
     local Lukies_theme = {
       normal = {
-        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.bg },
+        a = { fg = colors.text_light, bg = colors.gray3, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.gray3 },
         c = { fg = 'NONE', bg = colors.bg },
         x = { fg = 'NONE', bg = colors.bg },
         y = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
@@ -99,7 +99,8 @@ return {
         lualine_a = {
           {
             'mode',
-            icon = '󰝤 ',
+            -- icon = ' ',
+            icon = ' ',
             separator = { fg = colors.bg, left = '', right = ' ' },
             right_padding = 0,
           },
@@ -111,18 +112,21 @@ return {
               return current_directory ~= '' and current_directory .. '' or '[No Name]'
             end,
             icon = '󰉖',
-            color = { fg = colors.text_dim, bg = colors.bg },
-            right_padding = 2,
+            color = { fg = colors.text_dim, bg = colors.gray2 },
+            right_padding = 0,
+            separator = { right = '' },
           },
-          {
-            function()
-              local icon, _ = get_file_icon()
-              local filepath = vim.fn.expand '%:p'
-              return (icon or '') .. ' ' .. filepath .. ' '
-            end,
-            color = { fg = colors.text_dim, bg = colors.bg },
-            separator = { right = '' },
-          },
+          -- {
+          --   function()
+          --     local icon, icon_highlight = get_file_icon()
+          --     local filename = vim.fn.expand '%:t'
+          --
+          --     icon = icon and icon ~= '' and icon or '' -- placeholder icon
+          --
+          --     return icon .. ' ' .. filename .. ' ', icon_highlight
+          --   end,
+          --   color = { fg = colors.text_dim, bg = colors.bg },
+          -- },
         },
         lualine_c = {
           {
@@ -142,8 +146,8 @@ return {
               return string.format('%d/%d : %d ', current_line, total_lines, current_col)
             end,
             icon = ' 󰉢',
-            color = { fg = colors.text_dim, bg = colors.bg },
-            separator = { left = '' },
+            color = { fg = colors.text_dim, bg = colors.gray2 },
+            separator = { left = '' },
           },
         },
       },

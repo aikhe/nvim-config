@@ -8,8 +8,8 @@ return {
     opts = {
       terminal = 'powershell',
       cmd = { 'javac Sample.java', 'java Sample' },
-      size = { h = 60, w = 60 },
-      border = 'single',
+      size = { h = 60, w = 43 },
+      border = true,
     },
   },
 
