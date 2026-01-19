@@ -7,9 +7,18 @@ return {
       gray1 = '#080808',
       gray2 = '#191919',
       gray3 = '#2A2A2A',
-      gray4 = '#444444',
+      gray4 = '#212121',
       text_light = '#DEEEED',
       text_dim = '#7a7a7a',
+
+      -- black = '#000000',
+      -- gray1 = '#080808',
+      -- gray2 = '#434f55',
+      -- gray3 = '#5d6b66',
+      -- gray4 = '#555f66',
+      -- text_light = '#d3c6aa',
+      -- text_dim = '#9da9a0',
+
       red = '#D70000',
       warn = '#FFAA88',
       green = '#789978',
@@ -17,13 +26,12 @@ return {
       slate = '#cccccc',
     }
 
-    -- Helper to get normal background color dynamically
     local function get_bg()
       local hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
       if hl and hl.bg then
         return string.format('#%06x', hl.bg)
       end
-      return 'NONE' -- Fallback
+      return 'NONE'
     end
 
     colors.bg = get_bg()
@@ -37,7 +45,7 @@ return {
         c = { fg = 'NONE', bg = colors.bg },
         x = { fg = 'NONE', bg = colors.bg },
         y = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
-        z = { fg = colors.text_dim, bg = colors.bg },
+        z = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
       },
       insert = {
         a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
@@ -100,20 +108,23 @@ return {
           {
             'mode',
             -- icon = ' ',
-            icon = ' ',
-            separator = { fg = colors.bg, left = '', right = ' ' },
-            right_padding = 0,
+            icon = ' ',
+            separator = { fg = colors.gray3, bg = colors.gray3, left = '', right = '' },
           },
         },
         lualine_b = {
           {
             function()
-              local current_directory = vim.fn.expand '%:p:h:t'
-              return current_directory ~= '' and current_directory .. '' or '[No Name]'
+              local icon = get_file_icon()
+              local filename = vim.fn.expand '%:t'
+
+              if not icon or icon:match '^%s*$' then
+                icon = ''
+              end
+
+              return icon .. ' ' .. filename
             end,
-            icon = '󰉖',
             color = { fg = colors.text_dim, bg = colors.gray2 },
-            right_padding = 0,
             separator = { right = '' },
           },
           -- {
@@ -132,11 +143,32 @@ return {
           {
             'diagnostics',
             symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' },
-            color = { fg = colors.text_dim, bg = colors.bg }, -- MOVED INSIDE
+            color = { fg = colors.text_dim, bg = colors.bg },
           },
         },
-        lualine_x = {},
-        lualine_y = {},
+        lualine_x = {
+          {},
+        },
+        lualine_y = {
+          {
+            function()
+              if vim.bo.buftype == 'terminal' then
+                local name = vim.api.nvim_buf_get_name(0)
+
+                local term_cwd = name:match '^term://(.-)//%d+:'
+                if term_cwd then
+                  return vim.fn.fnamemodify(term_cwd, ':t')
+                end
+                return 'Terminal'
+              end
+
+              local current_directory = vim.fn.expand '%:p:h:t'
+              return current_directory ~= '' and current_directory .. '' or '[No Name]'
+            end,
+            icon = '󰉖',
+            color = { fg = colors.text_dim, bg = colors.gray2 },
+          },
+        },
         lualine_z = {
           {
             function()
@@ -146,7 +178,7 @@ return {
               return string.format('%d/%d : %d ', current_line, total_lines, current_col)
             end,
             icon = ' 󰉢',
-            color = { fg = colors.text_dim, bg = colors.gray2 },
+            color = { fg = colors.text_light, bg = colors.gray4 },
             separator = { left = '' },
           },
         },

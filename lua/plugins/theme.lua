@@ -27,43 +27,53 @@
 --   opts = ...,
 -- }
 
-return {
-  'neanias/everforest-nvim',
-  version = false,
-  lazy = false,
-  priority = 1000, -- make sure to load this before all the other start plugins
-  init = function()
-    vim.cmd.colorscheme 'everforest'
-  end,
-}
-
 -- return {
---   'slugbyte/lackluster.nvim',
+--   'neanias/everforest-nvim',
+--   version = false,
 --   lazy = false,
---   priority = 1000,
+--   priority = 1000, -- make sure to load this before all the other start plugins
 --   init = function()
---     --  When testing transparent backgrounds I found that comments where often hard to read,
---     --  and menus didn't look good but using setup() tweaks you can easily address that!
---     local lackluster = require 'lackluster'
---
---     -- !must called setup() before setting the colorscheme!
---     lackluster.setup {
---       tweak_syntax = {
---         comment = lackluster.color.gray4, -- or gray5
---       },
---       tweak_background = {
---         -- normal = 'none',
---         -- telescope = 'none',
---         -- menu = lackluster.color.gray3,
---         -- popup = 'none',
---       },
---     }
---
---     -- vim.cmd.colorscheme("lackluster")
---     vim.cmd.colorscheme 'lackluster-hack' -- my favorite
---     -- vim.cmd.colorscheme("lackluster-mint")
+--     vim.cmd.colorscheme 'everforest'
 --   end,
 -- }
+
+-- return {
+--   'folke/tokyonight.nvim',
+--   lazy = false,
+--   priority = 1000,
+--   opts = {},
+--   init = function()
+--     vim.cmd.colorscheme 'tokyonight'
+--   end,
+-- }
+
+return {
+  'slugbyte/lackluster.nvim',
+  lazy = false,
+  priority = 1000,
+  init = function()
+    --  When testing transparent backgrounds I found that comments where often hard to read,
+    --  and menus didn't look good but using setup() tweaks you can easily address that!
+    local lackluster = require 'lackluster'
+
+    -- !must called setup() before setting the colorscheme!
+    lackluster.setup {
+      tweak_syntax = {
+        comment = lackluster.color.gray4, -- or gray5
+      },
+      tweak_background = {
+        -- normal = 'none',
+        -- telescope = 'none',
+        -- menu = lackluster.color.gray3,
+        -- popup = 'none',
+      },
+    }
+
+    -- vim.cmd.colorscheme("lackluster")
+    vim.cmd.colorscheme 'lackluster-hack' -- my favorite
+    -- vim.cmd.colorscheme("lackluster-mint")
+  end,
+}
 
 --return {
 --   'nyoom-engineering/oxocarbon.nvim',

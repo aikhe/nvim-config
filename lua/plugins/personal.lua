@@ -2,14 +2,19 @@ return {
   {
     dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/exec.nvim',
     name = 'exec',
-    priority = 500,
-    lazy = false,
 
     opts = {
       terminal = 'powershell',
-      cmd = { 'javac Sample.java', 'java Sample' },
-      size = { h = 60, w = 43 },
+      size = { h = 70, w = 64 },
+      edit_key = 'm',
       border = true,
+      use_file_dir = true,
+    },
+
+    keys = {
+      { '<leader>ef', '<cmd>lua require("exec").open_float()<cr>', desc = 'Exec Float' },
+      -- { '<leader>es', '<cmd>lua require("exec").open_split()<cr>', desc = 'Exec Split' },
+      { '<leader>et', '<cmd>lua require("exec").toggle()<cr>', desc = 'Exec Toggle' },
     },
   },
 
@@ -27,4 +32,9 @@ return {
       -- vim.cmd [[colorscheme fleur]]
     end,
   },
+
+  -- {
+  --   'aikhe/exec',
+  --   opt = true,
+  -- },
 }
