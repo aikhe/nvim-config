@@ -1,7 +1,7 @@
 return {
   {
-    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/exec.nvim',
-    name = 'exec',
+    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/bday.nvim',
+    name = 'bday',
 
     opts = {
       terminal = 'powershell',
@@ -12,9 +12,9 @@ return {
     },
 
     keys = {
-      { '<leader>ef', '<cmd>lua require("exec").open_float()<cr>', desc = 'Exec Float' },
-      -- { '<leader>es', '<cmd>lua require("exec").open_split()<cr>', desc = 'Exec Split' },
-      { '<leader>et', '<cmd>lua require("exec").toggle()<cr>', desc = 'Exec Toggle' },
+      { '<leader>ef', '<cmd>lua require("bday").open_float()<cr>', desc = 'Bday Float' },
+      -- { '<leader>es', '<cmd>lua require("bday").open_split()<cr>', desc = 'Bday Split' },
+      { '<leader>et', '<cmd>lua require("bday").toggle()<cr>', desc = 'Bday Toggle' },
     },
   },
 
@@ -34,7 +34,7 @@ return {
   },
 
   -- {
-  --   'aikhe/exec',
+  --   'aikhe/bday',
   --   opt = true,
   -- },
 }
