@@ -3,20 +3,20 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local colors = {
-      black = '#000000',
+      black = '#141414',
       gray1 = '#080808',
       gray2 = '#191919',
       gray3 = '#2A2A2A',
-      gray4 = '#212121',
+      gray4 = '#222222',
       text_light = '#DEEEED',
       text_dim = '#7a7a7a',
 
-      -- black = '#000000',
+      -- black = '#313a40',
       -- gray1 = '#080808',
       -- gray2 = '#434f55',
-      -- gray3 = '#5d6b66',
-      -- gray4 = '#555f66',
-      -- text_light = '#d3c6aa',
+      -- gray3 = '#a7c080',
+      -- gray4 = '#dbbc7f',
+      -- text_light = '#20272a',
       -- text_dim = '#9da9a0',
 
       red = '#D70000',
@@ -40,16 +40,16 @@ return {
 
     local Lukies_theme = {
       normal = {
-        a = { fg = colors.text_light, bg = colors.gray3, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.gray3 },
-        c = { fg = 'NONE', bg = colors.bg },
-        x = { fg = 'NONE', bg = colors.bg },
-        y = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
-        z = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
+        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.black },
+        c = { fg = 'NONE', bg = colors.black },
+        x = { fg = 'NONE', bg = colors.black },
+        y = { fg = colors.text_dim, bg = colors.black, gui = 'bold' },
+        z = { fg = colors.text_dim, bg = colors.black, gui = 'bold' },
       },
       insert = {
-        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.bg },
+        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.black },
         c = { fg = 'NONE', bg = colors.bg },
       },
       visual = {
@@ -109,7 +109,7 @@ return {
             'mode',
             -- icon = ' ',
             icon = ' ',
-            separator = { fg = colors.gray3, bg = colors.gray3, left = '', right = '' },
+            separator = { fg = colors.gray3, bg = colors.black, left = '', right = '' },
           },
         },
         lualine_b = {
@@ -122,9 +122,11 @@ return {
                 icon = ''
               end
 
-              return icon .. ' ' .. filename
+              -- return icon .. ' ' .. filename
+              return '2026.01.18'
             end,
-            color = { fg = colors.text_dim, bg = colors.gray2 },
+            icon = '',
+            color = { fg = colors.text_dim, bg = colors.black },
             separator = { right = '' },
           },
           -- {
@@ -143,7 +145,7 @@ return {
           {
             'diagnostics',
             symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' },
-            color = { fg = colors.text_dim, bg = colors.bg },
+            color = { fg = colors.text_dim, bg = colors.black },
           },
         },
         lualine_x = {
@@ -163,10 +165,11 @@ return {
               end
 
               local current_directory = vim.fn.expand '%:p:h:t'
-              return current_directory ~= '' and current_directory .. '' or '[No Name]'
+              -- return current_directory ~= '' and current_directory .. '' or '[No Name]'
+              return 'v0.1.8'
             end,
             icon = '󰉖',
-            color = { fg = colors.text_dim, bg = colors.gray2 },
+            color = { fg = colors.text_dim, bg = colors.black },
           },
         },
         lualine_z = {
@@ -178,7 +181,7 @@ return {
               return string.format('%d/%d : %d ', current_line, total_lines, current_col)
             end,
             icon = ' 󰉢',
-            color = { fg = colors.text_light, bg = colors.gray4 },
+            color = { fg = colors.text_light, bg = colors.black },
             separator = { left = '' },
           },
         },
