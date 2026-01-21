@@ -1,21 +1,51 @@
 return {
   {
-    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/bday.nvim',
-    name = 'bday',
+    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/cake.nvim',
+    name = 'cake',
     -- lazy = false,
+
+    cmd = {
+      'CakeToggle',
+      'CakeFloat',
+      -- 'BdaySplit',
+    },
 
     opts = {
       terminal = 'powershell',
-      size = { h = 70, w = 64 },
-      edit_key = 'm',
+      title = ' cake.nvim',
+      size = { h = 80, w = 70 },
       border = false,
       use_file_dir = true,
+
+      mappings = {
+        new_tab = 'n',
+        edit_commands = 'm',
+        edit_cwd = ';',
+        rerun = 'r',
+        kill_tab = 'x',
+        next_tab = '<C-n>',
+        prev_tab = '<C-p>',
+      },
     },
 
     keys = {
-      { '<leader>ef', '<cmd>BdayFloat<cr>', desc = 'Bday Float' },
-      { '<leader>et', '<cmd>Bday<cr>', desc = 'Bday Toggle' },
-      -- { '<leader>es', '<cmd>BdaySplit<cr>', desc = 'Bday Split' },
+      {
+        '<leader>ef',
+        mode = { 'n', 'v' },
+        function()
+          require('cake').open_float()
+        end,
+        desc = 'Cake Float',
+      },
+      {
+        '<leader>et',
+        mode = { 'n', 'v' },
+        function()
+          require('cake').toggle()
+        end,
+        desc = 'Cake Toggle',
+      },
+      -- { '<leader>es', '<cmd>lua require("cake").open_split()<cr>', desc = 'Cake Split' },
     },
   },
 

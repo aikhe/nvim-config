@@ -51,5 +51,3 @@ vim.diagnostic.config {
   -- underline = true, -- Underline the problematic code
   -- severity_sort = true, -- Sort diagnostics by severity
 }
-
-vim.opt.fillchars:append { eob = ' ' }

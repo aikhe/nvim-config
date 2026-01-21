@@ -11,12 +11,12 @@ return {
       text_light = '#DEEEED',
       text_dim = '#7a7a7a',
 
-      -- black = '#313a40',
+      -- black = '#000000',
       -- gray1 = '#080808',
       -- gray2 = '#434f55',
       -- gray3 = '#a7c080',
       -- gray4 = '#dbbc7f',
-      -- text_light = '#20272a',
+      -- text_light = '#dbbc7f',
       -- text_dim = '#9da9a0',
 
       red = '#D70000',
@@ -40,12 +40,12 @@ return {
 
     local Lukies_theme = {
       normal = {
-        a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
-        b = { fg = colors.text_dim, bg = colors.black },
-        c = { fg = 'NONE', bg = colors.black },
-        x = { fg = 'NONE', bg = colors.black },
-        y = { fg = colors.text_dim, bg = colors.black, gui = 'bold' },
-        z = { fg = colors.text_dim, bg = colors.black, gui = 'bold' },
+        a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.text_dim, bg = colors.bg },
+        c = { fg = 'NONE', bg = colors.bg },
+        x = { fg = 'NONE', bg = colors.bg },
+        y = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
+        z = { fg = colors.text_dim, bg = colors.bg, gui = 'bold' },
       },
       insert = {
         a = { fg = colors.text_light, bg = colors.black, gui = 'bold' },
@@ -103,13 +103,16 @@ return {
           winbar = 1000,
         },
       },
+      vim.api.nvim_set_hl(0, 'MyLualineSep', { fg = colors.text_light, bg = colors.text_light }),
+
       sections = {
         lualine_a = {
           {
             'mode',
             -- icon = ' ',
-            icon = ' ',
-            separator = { fg = colors.gray3, bg = colors.black, left = '', right = '' },
+            icon = ' 󰝤',
+            color = { fg = colors.text_light, bg = colors.bg },
+            separator = { left = '%#MyLualineSep# ', right = '' },
           },
         },
         lualine_b = {
@@ -119,14 +122,13 @@ return {
               local filename = vim.fn.expand '%:t'
 
               if not icon or icon:match '^%s*$' then
-                icon = ''
+                icon = ' [+]'
               end
 
-              -- return icon .. ' ' .. filename
-              return '2026.01.18'
+              return icon .. ' ' .. filename
+              -- return '26.01.18'
             end,
-            icon = '',
-            color = { fg = colors.text_dim, bg = colors.black },
+            color = { fg = colors.text_dim, bg = colors.bg },
             separator = { right = '' },
           },
           -- {
@@ -145,7 +147,7 @@ return {
           {
             'diagnostics',
             symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' },
-            color = { fg = colors.text_dim, bg = colors.black },
+            color = { fg = colors.text_dim, bg = colors.bg },
           },
         },
         lualine_x = {
@@ -165,11 +167,11 @@ return {
               end
 
               local current_directory = vim.fn.expand '%:p:h:t'
-              -- return current_directory ~= '' and current_directory .. '' or '[No Name]'
-              return 'v0.1.8'
+              return current_directory ~= '' and current_directory .. '' or '[No Name]'
+              -- return 'v0.1.8'
             end,
             icon = '󰉖',
-            color = { fg = colors.text_dim, bg = colors.black },
+            color = { fg = colors.text_dim, bg = colors.bg },
           },
         },
         lualine_z = {
@@ -178,10 +180,11 @@ return {
               local total_lines = vim.fn.line '$'
               local current_line = vim.fn.line '.'
               local current_col = vim.fn.col '.'
-              return string.format('%d/%d : %d ', current_line, total_lines, current_col)
+              -- return string.format('%d/%d : %d', current_line, total_lines, current_col)
+              return '1/18 : 1'
             end,
-            icon = ' 󰉢',
-            color = { fg = colors.text_light, bg = colors.black },
+            icon = '󰉢 ',
+            color = { fg = colors.text_light, bg = colors.bg },
             separator = { left = '' },
           },
         },

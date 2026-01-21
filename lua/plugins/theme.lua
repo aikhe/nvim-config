@@ -72,6 +72,9 @@ return {
     -- vim.cmd.colorscheme("lackluster")
     vim.cmd.colorscheme 'lackluster-hack' -- my favorite
     -- vim.cmd.colorscheme("lackluster-mint")
+
+    vim.opt.fillchars = { eob = '~' }
+    vim.api.nvim_set_hl(0, 'EndOfBuffer', { fg = '#555555' })
   end,
 }
 
