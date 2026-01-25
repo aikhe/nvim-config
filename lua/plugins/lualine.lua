@@ -156,19 +156,23 @@ return {
         lualine_y = {
           {
             function()
+              -- Terminal buffers
               if vim.bo.buftype == 'terminal' then
                 local name = vim.api.nvim_buf_get_name(0)
 
                 local term_cwd = name:match '^term://(.-)//%d+:'
                 if term_cwd then
-                  return vim.fn.fnamemodify(term_cwd, ':t')
+                  return vim.fn.fnamemodify(term_cwd, ':~')
                 end
                 return 'Terminal'
               end
 
-              local current_directory = vim.fn.expand '%:p:h:t'
-              return current_directory ~= '' and current_directory .. '' or '[No Name]'
-              -- return 'v0.1.8'
+              local dir = vim.fn.expand '%:p:h'
+              if dir ~= '' then
+                return vim.fn.fnamemodify(dir, ':~')
+              end
+
+              return '[No Name]'
             end,
             icon = '󰉖',
             color = { fg = colors.text_dim, bg = colors.bg },
@@ -180,8 +184,8 @@ return {
               local total_lines = vim.fn.line '$'
               local current_line = vim.fn.line '.'
               local current_col = vim.fn.col '.'
-              -- return string.format('%d/%d : %d', current_line, total_lines, current_col)
-              return '1/18 : 1'
+              return string.format('%d/%d : %d', current_line, total_lines, current_col)
+              -- return '1/18 : 1'
             end,
             icon = '󰉢 ',
             color = { fg = colors.text_light, bg = colors.bg },
