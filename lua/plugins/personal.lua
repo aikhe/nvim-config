@@ -59,8 +59,21 @@ return {
     name = 'fleur',
     priority = 1000,
     lazy = false,
+    opts = {
+      transparent = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = true },
+      },
+      plugins = {
+        telescope = true,
+      },
+      -- on_colors = function(c)
+      --   c.accent = '#FF79C6' -- Override accent color
+      -- end,
+    },
     config = function()
-      -- vim.cmd [[colorscheme fleur]]
+      vim.cmd [[colorscheme fleur]]
     end,
   },
 

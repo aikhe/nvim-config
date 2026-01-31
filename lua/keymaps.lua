@@ -57,7 +57,18 @@ vim.keymap.set(
 )
 vim.keymap.set('n', '<leader>q', '<cmd>close<CR>', { desc = 'Close floating window' })
 
-vim.keymap.set('n', '<leader>pf', [[<cmd>Neotree float<cr>]])
+vim.keymap.set('n', '<leader>pf', function()
+  local bufname = vim.api.nvim_buf_get_name(0)
+
+  -- Check if we are in an Oil buffer
+  if bufname:match 'oil://' then
+    -- Just open Neotree without trying to "reveal" the Oil path
+    vim.cmd 'Neotree float'
+  else
+    -- We are in a normal file, so reveal it!
+    vim.cmd 'Neotree float reveal_force_cwd'
+  end
+end, { desc = 'Open Neotree (Smart Reveal)' })
 vim.keymap.set('n', '<leader>pt', [[<cmd>Neotree left<cr>]])
 vim.keymap.set('n', '<leader>pc', [[<cmd>Neotree toggle<cr>]])
 
