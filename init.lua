@@ -16,5 +16,7 @@ require('lazy').setup {
   checker = { enabled = true },
 }
 
+require 'hl'
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

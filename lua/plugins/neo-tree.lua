@@ -14,7 +14,7 @@ return {
   --   { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   -- },
   opts = {
-    popup_border_style = 'rounded',
+    popup_border_style = '',
     filesystem = {
       filtered_items = {
         visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
