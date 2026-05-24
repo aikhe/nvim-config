@@ -2,13 +2,8 @@ return {
   {
     dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/cake.nvim',
     name = 'cake',
-    -- lazy = false,
 
-    cmd = {
-      'CakeToggle',
-      'CakeFloat',
-      -- 'BdaySplit',
-    },
+    cmd = { 'CakeToggle', 'CakeFloat', 'CakeSplitV', 'CakeSplitH', 'CakeRun' },
 
     opts = {
       terminal = 'powershell',
@@ -31,54 +26,78 @@ return {
     keys = {
       {
         '<leader>ef',
-        mode = { 'n', 'v' },
         function()
-          require('cake').open_float()
+          require('cake').open { mode = 'float' }
         end,
         desc = 'Cake Float',
       },
       {
+        '<leader>ev',
+        function()
+          require('cake').open { mode = 'splitv' }
+        end,
+        desc = 'Cake Split Vertical',
+      },
+      {
+        '<leader>eh',
+        function()
+          require('cake').open { mode = 'splith' }
+        end,
+        desc = 'Cake Split Horizontal',
+      },
+      {
         '<leader>et',
-        mode = { 'n', 'v' },
         function()
           require('cake').toggle()
         end,
         desc = 'Cake Toggle',
       },
-      -- { '<leader>es', '<cmd>lua require("cake").open_split()<cr>', desc = 'Cake Split' },
+      {
+        '<leader>er',
+        function()
+          require('cake').run()
+        end,
+        desc = 'Cake Run',
+      },
     },
   },
-
-  -- {
-  --   dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/volt.test',
-  --   name = 'volt-test',
-  -- },
 
   {
     dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/fleur.nvim',
     name = 'fleur',
     priority = 1000,
     lazy = false,
-    opts = {
-      transparent = true,
-      styles = {
-        comments = { italic = true },
-        keywords = { bold = true },
-      },
-      plugins = {
-        telescope = true,
-      },
-      -- on_colors = function(c)
-      --   c.accent = '#FF79C6' -- Override accent color
-      -- end,
-    },
     config = function()
       vim.cmd [[colorscheme fleur]]
     end,
   },
 
-  -- {
-  --   'aikhe/bday',
-  --   opt = true,
-  -- },
+  {
+    dir = vim.fn.stdpath 'config' .. '/lua/custom_plugins/wrapped.nvim',
+    name = 'wrapped',
+    cmd = { 'WrappedNvim' },
+    opts = {
+      path = vim.fn.stdpath 'config', -- path to your neovim configuration
+      border = false,
+      size = {
+        width = 120,
+        height = 40,
+      },
+      exclude_filetype = {
+        '.gitmodules',
+      },
+      cap = {
+        commits = 1000,
+        plugins = 100,
+        plugins_ever = 200,
+        lines = 10000,
+      },
+      keys = {
+        close = 'q',
+        refresh = 'r',
+        prev_year = '<',
+        next_year = '>',
+      },
+    },
+  },
 }
