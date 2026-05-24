@@ -39,8 +39,6 @@ return {
 
     colors.bg = get_bg()
 
-    print(colors.bg)
-
     local Lukies_theme = {
       normal = {
         a = { fg = colors.text_light, bg = colors.bg, gui = 'bold' },
