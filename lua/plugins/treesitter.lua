@@ -39,6 +39,9 @@ return {
       'typescript',
       'tsx',
       'javascript',
+      'svelte',
+      'css',
+      'scss',
     }
 
     require('nvim-treesitter').install(ensure_installed)

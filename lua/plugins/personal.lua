@@ -78,7 +78,7 @@ return {
     cmd = { 'WrappedNvim' },
     opts = {
       path = vim.fn.stdpath 'config', -- path to your neovim configuration
-      border = false,
+      border = true,
       size = {
         width = 120,
         height = 40,
